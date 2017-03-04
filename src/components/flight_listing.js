@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class FlightListing extends Component {
   render() {
-    return(
+    return (
       <div className="flight-listing-wrapper">
         Listing
       </div>
@@ -10,4 +10,4 @@ class FlightListing extends Component {
   }
 }
 
-export default FlightListing
+export default FlightListing;

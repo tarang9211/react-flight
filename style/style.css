@@ -11,8 +11,10 @@ div.app-wrapper {
 
 div.search-wrapper {
   flex: 1;
+  outline: 1px dotted red;
 }
 
 div.flight-listing-wrapper {
   flex: 3;
+  outline: 1px dotted blue;
 }
