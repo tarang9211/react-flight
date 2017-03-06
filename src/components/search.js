@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Autocomplete from 'react-autocomplete';
+import Datepicker from 'react-datepicker';
+import moment from 'moment';
+// import 'react-datepicker/dist/react-datepicker.css';
 import { airports } from '../data';
 import { styles, matchStateToTerm } from '../utils';
 
@@ -9,7 +12,9 @@ class Search extends Component {
     super(props);
     this.state = {
       originCity: '',
-      destinationCity: ''
+      destinationCity: '',
+      departureDate: moment(),
+      returnDate: moment()
     };
 
     this.destinations = [];
@@ -22,6 +27,20 @@ class Search extends Component {
   handleOriginSelect = (value) => {
     this.setState({ originCity: value });
     this.destinations = airports.filter(item => item.name !== value);
+  }
+
+  handleDepartureDateChange = (date) => {
+    console.log('departure date', date._d);
+    this.setState({ departureDate: date._d });
+  }
+
+  handleOneWaySearch = (e) => {
+    console.log(e);
+  }
+
+  handleReturnDateChange= (date) => {
+    console.log('return date', date._d);
+    this.setState({ returnDate: date._d });
   }
 
   render() {
@@ -72,6 +91,28 @@ class Search extends Component {
                 getItemValue={item => item.name}
                 shouldItemRender={matchStateToTerm}
               />
+            </div>
+
+            {/* departure date datepicker component */}
+            <div>
+              <Datepicker
+                onChange={this.handleDepartureDateChange}
+                selected={this.state.departureDate}
+                placeholder="Select departure date"
+              />
+            </div>
+
+            {/* return date datepicker component */}
+            <div>
+              <Datepicker
+                onChange={this.handleReturnDateChange}
+                selected={this.state.returnDate}
+                placeholder="Select return date"
+              />
+            </div>
+
+            <div>
+              <button onClick={this.handleOneWaySearch}>Button</button>
             </div>
           </TabPanel>
           <TabPanel>
