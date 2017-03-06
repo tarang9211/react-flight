@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { connect } from 'react-redux';
 import Autocomplete from 'react-autocomplete';
 import Datepicker from 'react-datepicker';
 import moment from 'moment';
-// import 'react-datepicker/dist/react-datepicker.css';
 import { airports } from '../data';
 import { styles, matchStateToTerm } from '../utils';
+import { fetchOneWayFlights } from '../actions/index';
 
 class Search extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Search extends Component {
     this.destinations = [];
   }
 
-  handleOriginChange = (event, value) => {
+  handleOriginCityChange = (event, value) => {
     this.setState({ originCity: value });
   }
 
@@ -29,12 +30,29 @@ class Search extends Component {
     this.destinations = airports.filter(item => item.name !== value);
   }
 
+  handleDestinationCityChange = (event, value) => {
+    this.setState({ destinationCity: value });
+  }
+
+  handleDestinationCitySelect = (value) => {
+    this.setState({ destinationCity: value });
+  }
+
   handleDepartureDateChange = (date) => {
     this.setState({ departureDate: date });
   }
 
   handleOneWaySearch = () => {
-    console.log(this.state);
+    const { originCity, destinationCity, departureDate, returnDate } = this.state;
+
+    // pass data to action creator
+    this.props.fetchOneWayFlights({
+      type: 'one-way',
+      originCity,
+      destinationCity,
+      departureDate,
+      returnDate
+    });
   }
 
   handleReturnDateChange= (date) => {
@@ -77,8 +95,8 @@ class Search extends Component {
                 autoHighlight
                 value={this.state.destinationCity}
                 items={this.destinations}
-                onChange={(event, value) => this.setState({ originCity: value })}
-                onSelect={value => this.setState({ originCity: value })}
+                onChange={this.handleDestinationCityChange}
+                onSelect={this.handleDestinationCitySelect}
                 renderItem={(item, isHighlighted) => (
                   <div
                     style={isHighlighted ? styles.highlightedItem : styles.item}
@@ -122,4 +140,6 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default connect(null, {
+  fetchOneWayFlights
+})(Search);
