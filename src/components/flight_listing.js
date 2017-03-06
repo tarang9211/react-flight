@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class FlightListing extends Component {
   render() {
@@ -10,4 +11,10 @@ class FlightListing extends Component {
   }
 }
 
-export default FlightListing;
+function mapStateToProps(state) {
+  return {
+    onewaydata: state.onewaydata
+  };
+}
+
+export default connect(mapStateToProps)(FlightListing);
