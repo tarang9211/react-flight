@@ -30,17 +30,15 @@ class Search extends Component {
   }
 
   handleDepartureDateChange = (date) => {
-    console.log('departure date', date._d);
-    this.setState({ departureDate: date._d });
+    this.setState({ departureDate: date });
   }
 
-  handleOneWaySearch = (e) => {
-    console.log(e);
+  handleOneWaySearch = () => {
+    console.log(this.state);
   }
 
   handleReturnDateChange= (date) => {
-    console.log('return date', date._d);
-    this.setState({ returnDate: date._d });
+    this.setState({ returnDate: date });
   }
 
   render() {

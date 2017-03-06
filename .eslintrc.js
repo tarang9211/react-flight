@@ -38,8 +38,7 @@ module.exports = {
       0
     ],
     "no-underscore-dangle": [
-      "error",
-      { "allow": ["_d"] }
+      "error"
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/forbid-prop-types": [1, { "forbid": ['any'] }],
