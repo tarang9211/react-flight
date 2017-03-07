@@ -8,13 +8,11 @@ function filter(data) {
     flight.type === data.type &&
     flight.origin === data.originCity &&
     flight.destination === data.destinationCity &&
-    flight.departureDate >= data.departureDate &&
-    flight.arrivalTime >= data.departureDate
+    flight.departureDate >= data.departureDate
   );
   console.log('log from reducer: ', filteredResults);
   return filteredResults;
 }
-
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -29,7 +27,15 @@ export default function (state = INITIAL_STATE, action) {
       destination: action.payload.destinationCity
     };
   case FETCH_RETURN:
-    return { ...state, all: filter(action.payload), type: 'return' };
+    return {
+      ...state,
+      all: filter(action.payload),
+      type: 'return',
+      departureDate: action.payload.departureDate,
+      returnDate: action.payload.returnDate,
+      origin: action.payload.originCity,
+      destination: action.payload.destinationCity
+    };
   default:
     return state;
   }

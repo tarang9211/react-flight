@@ -1,17 +1,8 @@
 import React, { PropTypes } from 'react';
-import moment from 'moment';
+import { formatHourMinute } from '../utils';
 
-const formatHourMinute = date => (
-  moment(date).format('HH:mm')
-);
-
-const RouteInfo = ({ isReturn, code, departureDate,
+const RouteInfo = ({ code, departureDate,
   arrivalTime, destination, fare, origin }) => {
-  if (isReturn) {
-    return (
-      <div>Placeholder</div>
-    );
-  }
   return (
     <div className="flight-list-item">
       <div className="flight-code-info">
@@ -43,7 +34,6 @@ const RouteInfo = ({ isReturn, code, departureDate,
 };
 
 RouteInfo.propTypes = {
-  isReturn: PropTypes.bool,
 
   code: PropTypes.string,
 
