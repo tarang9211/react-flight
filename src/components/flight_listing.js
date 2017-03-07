@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
+import RouteHeader from './route_header';
+import RouteInfo from './route_info';
 
 class FlightListing extends Component {
 
@@ -10,49 +11,23 @@ class FlightListing extends Component {
       type,
       origin,
       destination,
-      departureDate,
-      arrivalTime,
       all
     } = this.props.flights;
 
     if (type === 'one-way') {
       return (
         <div>
-          <div className="flight-listing-header">
-            <div className="flight-listing-header-location">
-              <h2>{origin} {destination}</h2>
-            </div>
-            <div className="flight-listing-header-dates">
-              <p>Depart: {moment(departureDate).format('MMMM Do YYYY')}</p>
-            </div>
-          </div>
+          <RouteHeader origin={origin} destination={destination} />
           {all.map(flight =>
-            <div className="flight-list-item" key={flight.id}>
-              <div className="flight-code-info">
-                <span>{flight.flight_code}</span>
-              </div>
-              <div className="origin-info">
-                <span className="block">{this.formatHourMinute(flight.departureDate)}
-                </span>
-                <small>{flight.origin}</small>
-              </div>
-              <div className="destination-info">
-                <span className="block">{this.formatHourMinute(flight.arrivalTime)}
-                </span>
-                <small>{flight.destination}</small>
-              </div>
-              <div className="duration-info">
-                <span>
-                  2h 05m
-                </span>
-              </div>
-              <div className="fare-info">
-                {flight.fare}
-              </div>
-              <div className="actions">
-                <button className="button-book">Book</button>
-              </div>
-            </div>
+            <RouteInfo
+              id={flight.id}
+              code={flight.flight_code}
+              departureDate={flight.departureDate}
+              arrivalTime={flight.arrivalTime}
+              destination={flight.destination}
+              origin={flight.origin}
+              fare={flight.fare}
+            />
           )}
         </div>
       );
@@ -61,14 +36,6 @@ class FlightListing extends Component {
     } else {
 
     }
-  }
-
-  formatHourMinute = date => (
-    moment(date).format('HH:mm')
-  )
-
-  displayFlightTime = (departure, arrival) => {
-
   }
 
   render() {
