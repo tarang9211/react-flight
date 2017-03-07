@@ -13,6 +13,7 @@ export const flights = [
   {
     type: 'one-way',
     id: 1,
+    flight_code: 'PD - 202',
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$200',
@@ -22,6 +23,7 @@ export const flights = [
   {
     type: 'one-way',
     id: 2,
+    flight_code: 'PD - 201',
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$100',
@@ -31,6 +33,7 @@ export const flights = [
   {
     type: 'one-way',
     id: 3,
+    flight_code: 'PD - 203',
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$400',
@@ -40,6 +43,7 @@ export const flights = [
   {
     type: 'one-way',
     id: 4,
+    flight_code: 'PD - 204',
     origin: 'Pune',
     destination: 'Rajasthan',
     fare: '$200',

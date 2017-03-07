@@ -19,7 +19,15 @@ function filter(data) {
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
   case FETCH_ONE_WAY:
-    return { ...state, all: filter(action.payload), type: 'one-way' };
+    return {
+      ...state,
+      all: filter(action.payload),
+      type: 'one-way',
+      departureDate: action.payload.departureDate,
+      returnDate: action.payload.returnDate,
+      origin: action.payload.originCity,
+      destination: action.payload.destinationCity
+    };
   case FETCH_RETURN:
     return { ...state, all: filter(action.payload), type: 'return' };
   default:
