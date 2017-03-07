@@ -53,6 +53,7 @@ export const flights = [
   {
     type: 'return',
     id: 5,
+    flight_code: 'LH - 961',
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$200',
@@ -62,6 +63,7 @@ export const flights = [
   {
     type: 'return',
     id: 6,
+    flight_code: 'EA - 512',
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$100',
@@ -71,6 +73,7 @@ export const flights = [
   {
     type: 'return',
     id: 7,
+    flight_code: 'RT - 412',
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$400',
@@ -80,6 +83,7 @@ export const flights = [
   {
     type: 'return',
     id: 8,
+    flight_code: 'QA - 127',
     origin: 'Pune',
     destination: 'Rajasthan',
     fare: '$200',

@@ -43,15 +43,14 @@ class Search extends Component {
   }
 
   handleOneWaySearch = () => {
-    const { originCity, destinationCity, departureDate, returnDate } = this.state;
+    const { originCity, destinationCity, departureDate } = this.state;
 
     // pass data to action creator
     this.props.fetchOneWayFlights({
       type: 'one-way',
       originCity,
       destinationCity,
-      departureDate,
-      returnDate
+      departureDate
     });
   }
 
@@ -130,16 +129,7 @@ class Search extends Component {
                 placeholder="Select departure date"
               />
             </div>
-
-            {/* return date datepicker component */}
-            <div>
-              <Datepicker
-                onChange={this.handleReturnDateChange}
-                selected={this.state.returnDate}
-                placeholder="Select return date"
-              />
-            </div>
-
+            
             <div>
               <button onClick={this.handleOneWaySearch} className="button one-way-search-button">Search</button>
             </div>
