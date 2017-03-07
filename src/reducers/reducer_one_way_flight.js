@@ -9,7 +9,7 @@ function filter(data) {
     flight.origin === data.originCity &&
     flight.destination === data.destinationCity &&
     flight.departureDate >= data.departureDate &&
-    flight.returnDate >= data.departureDate
+    flight.arrivalTime >= data.departureDate
   );
   console.log('log from reducer: ', filteredResults);
   return filteredResults;

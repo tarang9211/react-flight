@@ -11,7 +11,7 @@ class FlightListing extends Component {
       origin,
       destination,
       departureDate,
-      returnDate,
+      arrivalTime,
       all
     } = this.props.flights;
 
@@ -20,16 +20,38 @@ class FlightListing extends Component {
         <div>
           <div className="flight-listing-header">
             <div className="flight-listing-header-location">
-              <p>{origin} {destination}</p>
+              <h2>{origin} {destination}</h2>
             </div>
             <div className="flight-listing-header-dates">
-              <p>Depart: {moment(departureDate).format('MMM Mo YYYY')}</p>
-              <p>Return: {moment(returnDate).format('MMM Mo YYYY')}</p>
+              <p>Depart: {moment(departureDate).format('MMMM Do YYYY')}</p>
             </div>
           </div>
-          {all.map(item =>
-            <div className="flight-list-item">
-              {item.origin}
+          {all.map(flight =>
+            <div className="flight-list-item" key={flight.id}>
+              <div className="flight-code-info">
+                <span>{flight.flight_code}</span>
+              </div>
+              <div className="origin-info">
+                <span className="block">{this.formatHourMinute(flight.departureDate)}
+                </span>
+                <small>{flight.origin}</small>
+              </div>
+              <div className="destination-info">
+                <span className="block">{this.formatHourMinute(flight.arrivalTime)}
+                </span>
+                <small>{flight.destination}</small>
+              </div>
+              <div className="duration-info">
+                <span>
+                  2h 05m
+                </span>
+              </div>
+              <div className="fare-info">
+                {flight.fare}
+              </div>
+              <div className="actions">
+                <button className="button-book">Book</button>
+              </div>
             </div>
           )}
         </div>
@@ -39,6 +61,14 @@ class FlightListing extends Component {
     } else {
 
     }
+  }
+
+  formatHourMinute = date => (
+    moment(date).format('HH:mm')
+  )
+
+  displayFlightTime = (departure, arrival) => {
+
   }
 
   render() {
