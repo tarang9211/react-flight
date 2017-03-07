@@ -48,6 +48,7 @@ export const flights = [
   },
   {
     type: 'return',
+    id: 5,
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$200',
@@ -56,6 +57,7 @@ export const flights = [
   },
   {
     type: 'return',
+    id: 6,
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$100',
@@ -64,6 +66,7 @@ export const flights = [
   },
   {
     type: 'return',
+    id: 7,
     origin: 'Pune',
     destination: 'Delhi',
     fare: '$400',
@@ -72,6 +75,7 @@ export const flights = [
   },
   {
     type: 'return',
+    id: 8,
     origin: 'Pune',
     destination: 'Rajasthan',
     fare: '$200',

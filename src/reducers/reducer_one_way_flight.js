@@ -1,4 +1,4 @@
-import { FETCH_ONE_WAY } from '../actions/index';
+import { FETCH_ONE_WAY, FETCH_RETURN } from '../actions/index';
 import { flights } from '../data';
 
 const INITIAL_STATE = { all: [] };
@@ -11,7 +11,7 @@ function filter(data) {
     flight.departureDate >= data.departureDate &&
     flight.returnDate >= data.departureDate
   );
-  console.log(filteredResults);
+  console.log('log from reducer: ', filteredResults);
   return filteredResults;
 }
 
@@ -19,7 +19,9 @@ function filter(data) {
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
   case FETCH_ONE_WAY:
-    return { ...state, all: filter(action.payload) };
+    return { ...state, all: filter(action.payload), type: 'one-way' };
+  case FETCH_RETURN:
+    return { ...state, all: filter(action.payload), type: 'return' };
   default:
     return state;
   }
