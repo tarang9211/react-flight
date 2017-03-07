@@ -46,6 +46,7 @@ class Search extends Component {
     const { originCity, destinationCity, departureDate, returnDate } = this.state;
 
     // pass data to action creator
+    console.log(returnDate);
     this.props.fetchOneWayFlights({
       type: 'one-way',
       originCity,
