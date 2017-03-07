@@ -7,8 +7,11 @@ function filter(data) {
   const filteredResults = flights.filter(flight =>
     flight.type === data.type &&
     flight.origin === data.originCity &&
-    flight.destination === data.destinationCity
+    flight.destination === data.destinationCity &&
+    flight.departureDate >= data.departureDate &&
+    flight.returnDate >= data.departureDate
   );
+  console.log(filteredResults);
   return filteredResults;
 }
 
