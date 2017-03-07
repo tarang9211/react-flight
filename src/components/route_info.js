@@ -5,7 +5,7 @@ const formatHourMinute = date => (
   moment(date).format('HH:mm')
 );
 
-const RouteInfo = ({ isReturn, id, code, departureDate,
+const RouteInfo = ({ isReturn, code, departureDate,
   arrivalTime, destination, fare, origin }) => {
   if (isReturn) {
     return (
@@ -13,7 +13,7 @@ const RouteInfo = ({ isReturn, id, code, departureDate,
     );
   }
   return (
-    <div className="flight-list-item" key={id}>
+    <div className="flight-list-item">
       <div className="flight-code-info">
         <span>{code}</span>
       </div>
@@ -45,13 +45,11 @@ const RouteInfo = ({ isReturn, id, code, departureDate,
 RouteInfo.propTypes = {
   isReturn: PropTypes.bool,
 
-  id: PropTypes.number,
-
   code: PropTypes.string,
 
-  departureDate: PropTypes.func,
+  departureDate: PropTypes.object,
 
-  arrivalTime: PropTypes.func,
+  arrivalTime: PropTypes.object,
 
   destination: PropTypes.string,
 

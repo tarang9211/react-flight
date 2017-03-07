@@ -20,6 +20,7 @@ class FlightListing extends Component {
           <RouteHeader origin={origin} destination={destination} />
           {all.map(flight =>
             <RouteInfo
+              key={flight.id}
               id={flight.id}
               code={flight.flight_code}
               departureDate={flight.departureDate}
