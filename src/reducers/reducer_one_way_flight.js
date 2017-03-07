@@ -4,7 +4,6 @@ import { flights } from '../data';
 const INITIAL_STATE = { all: [] };
 
 function filter(data) {
-  console.log(data);
   const filteredResults = flights.filter(flight =>
     flight.type === data.type &&
     flight.origin === data.originCity &&
@@ -14,18 +13,6 @@ function filter(data) {
   console.log('log from reducer: ', filteredResults);
   return filteredResults;
 }
-
-function returnfilter(data) {
-  const filteredResults = flights.filter(flight =>
-    flight.type === data.type &&
-    flight.origin === data.originCity &&
-    flight.destination === data.destinationCity &&
-    flight.departureDate >= data.departureDate
-  );
-  console.log('log from reducer: ', filteredResults);
-  return filteredResults;
-}
-
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -42,8 +29,12 @@ export default function (state = INITIAL_STATE, action) {
   case FETCH_RETURN:
     return {
       ...state,
-      all: returnfilter(action.payload),
-      type: 'return'
+      all: filter(action.payload),
+      type: 'return',
+      departureDate: action.payload.departureDate,
+      returnDate: action.payload.returnDate,
+      origin: action.payload.originCity,
+      destination: action.payload.destinationCity
     };
   default:
     return state;

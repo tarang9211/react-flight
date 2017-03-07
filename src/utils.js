@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const styles = {
   item: {
     padding: '2px 6px',
@@ -15,6 +17,10 @@ export const styles = {
     border: 'solid 1px #ccc'
   }
 };
+
+export const formatHourMinute = date => (
+  date.format('HH:mm')
+);
 
 
 export function matchStateToTerm(state, value) {

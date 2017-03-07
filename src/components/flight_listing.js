@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RouteHeader from './route_header';
 import RouteInfo from './route_info';
+import ReturnFlightRouteInfo from './returnflight_route_info';
 
 class FlightListing extends Component {
 
@@ -11,13 +12,15 @@ class FlightListing extends Component {
       type,
       origin,
       destination,
-      all
+      all,
+      departureDate,
+      returnDate
     } = this.props.flights;
 
     if (type === 'one-way') {
       return (
         <div>
-          <RouteHeader origin={origin} destination={destination} />
+          <RouteHeader origin={origin} destination={destination} departureDate={departureDate} />
           {all.map(flight =>
             <RouteInfo
               key={flight.id}
@@ -33,7 +36,33 @@ class FlightListing extends Component {
         </div>
       );
     } else if (type === 'return') {
-
+      return (
+        <div>
+          <RouteHeader
+            isReturn
+            origin={origin}
+            destination={destination}
+            departureDate={departureDate}
+            returnDate={returnDate}
+          />
+          {all.map(flight =>
+            <ReturnFlightRouteInfo
+              key={flight.id}
+              id={flight.id}
+              routeOneCode={flight.route_one_code}
+              routeTwoCode={flight.route_two_code}
+              origin={flight.origin}
+              destination={flight.destination}
+              routeOneDeparture={flight.route_one_departure}
+              routeOneArrival={flight.route_one_arrival}
+              routeTwoDeparture={flight.route_two_departure}
+              routeTwoArrival={flight.route_two_arrival}
+              routeOneFare={flight.route_one_fare}
+              routeTwoFare={flight.route_two_fare}
+            />
+          )}
+        </div>
+      );
     } else {
 
     }
