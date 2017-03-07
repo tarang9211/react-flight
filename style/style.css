@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+.block {
+  display: block;
+}
+
 html, body, div.container {
   margin: 0px;
   height: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 div.app-wrapper {
@@ -17,4 +23,42 @@ div.search-wrapper {
 div.flight-listing-wrapper {
   flex: 3;
   outline: 1px dotted blue;
+}
+
+div.flight-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div.flight-listing-header {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+
+div.flight-list-item {
+  display: flex;
+  height: 50px;
+  margin: 1.1em 1em;
+  padding: 1em;
+  border-radius: 0.28571429rem;
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+div.origin-info, div.destination-info, div.fare-info, div.duration-info, div.flight-code-info, div.actions {
+  flex: 1;
+}
+
+div.actions > button.button-book {
+  width: 50%;
+  color: #ffffff;
+  background-color: #21ba45;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 0.85em;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 500;
 }

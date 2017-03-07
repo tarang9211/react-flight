@@ -6,7 +6,7 @@ import Datepicker from 'react-datepicker';
 import moment from 'moment';
 import { airports } from '../data';
 import { styles, matchStateToTerm } from '../utils';
-import { fetchOneWayFlights } from '../actions/index';
+import { fetchOneWayFlights, fetchReturnFlights } from '../actions/index';
 
 class Search extends Component {
   constructor(props) {
@@ -46,7 +46,6 @@ class Search extends Component {
     const { originCity, destinationCity, departureDate, returnDate } = this.state;
 
     // pass data to action creator
-    console.log(returnDate);
     this.props.fetchOneWayFlights({
       type: 'one-way',
       originCity,
@@ -58,6 +57,19 @@ class Search extends Component {
 
   handleReturnDateChange= (date) => {
     this.setState({ returnDate: date });
+  }
+
+  handleReturnSearch = () => {
+    const { originCity, destinationCity, departureDate, returnDate } = this.state;
+
+    // pass data to action creator
+    this.props.fetchReturnFlights({
+      type: 'return',
+      originCity,
+      destinationCity,
+      departureDate,
+      returnDate
+    });
   }
 
   render() {
@@ -129,11 +141,73 @@ class Search extends Component {
             </div>
 
             <div>
-              <button onClick={this.handleOneWaySearch}>Button</button>
+              <button onClick={this.handleOneWaySearch} className="button one-way-search-button">Search</button>
             </div>
           </TabPanel>
           <TabPanel>
-            Return
+
+            {/* Autocomplete component for selecting origin city */}
+            <div className="origin-input-selector">
+              <Autocomplete
+                autoHighlight
+                value={this.state.originCity}
+                items={airports}
+                onChange={this.handleOriginChange}
+                onSelect={this.handleOriginSelect}
+                renderItem={(item, isHighlighted) => (
+                  <div
+                    style={isHighlighted ? styles.highlightedItem : styles.item}
+                    key={item.abbr}
+                  >{item.name}
+                  </div>
+                  )}
+                getItemValue={item => item.name}
+                shouldItemRender={matchStateToTerm}
+              />
+            </div>
+
+            {/* Autocomplete for component for selecting destination city */}
+            <div className="destination-input-selector">
+              <Autocomplete
+                autoHighlight
+                value={this.state.destinationCity}
+                items={this.destinations}
+                onChange={this.handleDestinationCityChange}
+                onSelect={this.handleDestinationCitySelect}
+                renderItem={(item, isHighlighted) => (
+                  <div
+                    style={isHighlighted ? styles.highlightedItem : styles.item}
+                    key={item.abbr}
+                  >{item.name}
+                  </div>
+                  )}
+                getItemValue={item => item.name}
+                shouldItemRender={matchStateToTerm}
+              />
+            </div>
+
+            {/* departure date datepicker component */}
+            <div>
+              <Datepicker
+                onChange={this.handleDepartureDateChange}
+                selected={this.state.departureDate}
+                placeholder="Select departure date"
+              />
+            </div>
+
+            {/* return date datepicker component */}
+            <div>
+              <Datepicker
+                onChange={this.handleReturnDateChange}
+                selected={this.state.returnDate}
+                placeholder="Select return date"
+              />
+            </div>
+
+            <div>
+              <button onClick={this.handleReturnSearch} className="button return-search-button">Search</button>
+            </div>
+
           </TabPanel>
         </Tabs>
       </div>
@@ -142,5 +216,6 @@ class Search extends Component {
 }
 
 export default connect(null, {
-  fetchOneWayFlights
+  fetchOneWayFlights,
+  fetchReturnFlights
 })(Search);
