@@ -73,18 +73,18 @@ div.flight-list-item-return {
   background-color: white;
 }
 
-div.flight-route-one-info, div.flight-route-two-info {
+div.flight-route_one-info, div.flight-route_two-info {
   display: flex;
   flex: 1;
 }
 
-div.route-one-code,
-div.route-one-origin,
-div.route-one-destination,
-div.route-one-fare,
-div.route-two-code,
-div.route-two-origin,
-div.route-two-destination,
-div.route-two-fare {
+div.route_one_code,
+div.route_one_origin,
+div.route_one_destination,
+div.route_one_fare,
+div.route_two_code,
+div.route_two_origin,
+div.route_two_destination,
+div.route_two_fare {
   flex: 1;
 }

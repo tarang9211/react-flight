@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import RouteHeader from './route_header';
 import RouteInfo from './route_info';
 import ReturnFlightRouteInfo from './returnflight_route_info';
+import ReturnRouteInfo from './return_route_info';
 
 class FlightListing extends Component {
 
@@ -46,20 +47,10 @@ class FlightListing extends Component {
             returnDate={returnDate}
           />
           {all.map(flight =>
-            <ReturnFlightRouteInfo
-              key={flight.id}
-              id={flight.id}
-              routeOneCode={flight.route_one_code}
-              routeTwoCode={flight.route_two_code}
-              origin={flight.origin}
-              destination={flight.destination}
-              routeOneDeparture={flight.route_one_departure}
-              routeOneArrival={flight.route_one_arrival}
-              routeTwoDeparture={flight.route_two_departure}
-              routeTwoArrival={flight.route_two_arrival}
-              routeOneFare={flight.route_one_fare}
-              routeTwoFare={flight.route_two_fare}
-            />
+            <div className="flight-list-item-return" key={flight.id}>
+              <ReturnRouteInfo customClass="route_one" data={flight} />
+              <ReturnRouteInfo customClass="route_two" data={flight} />
+            </div>
           )}
         </div>
       );
