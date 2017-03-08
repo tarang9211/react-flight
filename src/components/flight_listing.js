@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RouteHeader from './route_header';
 import RouteInfo from './route_info';
-import ReturnFlightRouteInfo from './returnflight_route_info';
 import ReturnRouteInfo from './return_route_info';
 
 class FlightListing extends Component {
