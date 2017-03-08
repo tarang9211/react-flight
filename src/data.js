@@ -22,6 +22,26 @@ export const flights = [
   },
   {
     type: 'one-way',
+    id: 1,
+    flight_code: 'PQ - 272',
+    origin: 'Pune',
+    destination: 'Delhi',
+    fare: '7,000',
+    departureDate: moment().add(1, 'hours'),
+    arrivalTime: moment().add(2, 'hours')
+  },
+  {
+    type: 'one-way',
+    id: 1,
+    flight_code: 'PA - 152',
+    origin: 'Pune',
+    destination: 'Delhi',
+    fare: '8000',
+    departureDate: moment().add(1, 'hours'),
+    arrivalTime: moment().add(2, 'hours')
+  },
+  {
+    type: 'one-way',
     id: 2,
     flight_code: 'AZ - 201',
     origin: 'Pune',
@@ -47,6 +67,36 @@ export const flights = [
     origin: 'Pune',
     destination: 'Rajasthan',
     fare: '5,500',
+    departureDate: moment().add(4, 'hours'),
+    arrivalTime: moment().add(6, 'hours')
+  },
+  {
+    type: 'one-way',
+    id: 12,
+    flight_code: 'ER - 901',
+    origin: 'Pune',
+    destination: 'Rajasthan',
+    fare: '5,000',
+    departureDate: moment().add(4, 'hours'),
+    arrivalTime: moment().add(6, 'hours')
+  },
+  {
+    type: 'one-way',
+    id: 20,
+    flight_code: 'QW - 284',
+    origin: 'Pune',
+    destination: 'Rajasthan',
+    fare: '6,500',
+    departureDate: moment().add(4, 'hours'),
+    arrivalTime: moment().add(6, 'hours')
+  },
+  {
+    type: 'one-way',
+    id: 4,
+    flight_code: 'RT - 504',
+    origin: 'Pune',
+    destination: 'Rajasthan',
+    fare: '7,000',
     departureDate: moment().add(4, 'hours'),
     arrivalTime: moment().add(6, 'hours')
   },
