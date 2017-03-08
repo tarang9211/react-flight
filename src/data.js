@@ -22,7 +22,7 @@ export const flights = [
   },
   {
     type: 'one-way',
-    id: 1,
+    id: 121,
     flight_code: 'PQ - 272',
     origin: 'Pune',
     destination: 'Delhi',
@@ -32,7 +32,7 @@ export const flights = [
   },
   {
     type: 'one-way',
-    id: 1,
+    id: 123,
     flight_code: 'PA - 152',
     origin: 'Pune',
     destination: 'Delhi',
